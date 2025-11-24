@@ -1,0 +1,3 @@
+[submodule "fastvlm"]
+	path = fastvlm
+	url = https://github.com/apple/ml-fastvlm.git

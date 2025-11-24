@@ -28,18 +28,60 @@ This project implements and compares three token pruning techniques for optimizi
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+This project requires the original [FastVLM implementation](https://github.com/apple/ml-fastvlm) from Apple Research.
+
 ### Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/fastvlm-token-pruning.git
-cd fastvlm-token-pruning
+#### Step 1: Clone with Submodules
 
-# Install dependencies
+```bash
+# Clone the repository with FastVLM submodule
+git clone --recursive https://github.com/yourusername/fastvlm-token-pruning.git
+cd fastvlm-token-pruning
+```
+
+If you already cloned without `--recursive`:
+
+```bash
+git submodule update --init --recursive
+```
+
+#### Step 2: Download Model Checkpoints
+
+Use the provided script from FastVLM to download pre-trained models:
+
+```bash
+cd fastvlm
+bash get_models.sh
+```
+
+This downloads checkpoints to `fastvlm/checkpoints/`. Available models:
+- `llava-fastvithd_0.5b_stage2` - Stage 2 checkpoint
+- `llava-fastvithd_0.5b_stage3` - Stage 3 checkpoint (recommended)
+
+#### Step 3: Install Dependencies
+
+```bash
+# Install project dependencies
+cd ..
 pip install -r requirements.txt
 
-# Download FastVLM model (required)
-# Follow instructions from: https://github.com/apple/ml-fastvlm
+# Install FastVLM package
+cd fastvlm
+pip install -e .
+cd ..
+```
+
+#### Step 4: Verify Installation
+
+```bash
+# Quick test
+python scripts/eval_ats.py \
+    --model-path fastvlm/checkpoints/llava-fastvithd_0.5b_stage3 \
+    --image-file assets/images/banana.jpg \
+    --num-runs 1
 ```
 
 ### Basic Usage
@@ -280,4 +322,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 For questions or feedback, please open an issue on GitHub.
 
 ---
-
