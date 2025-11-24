@@ -545,7 +545,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate different token pruning methods for VLM optimization")
     parser.add_argument("--model-path", type=str, default="checkpoints/llava-fastvithd_0.5b_stage3")
     parser.add_argument("--model-base", type=str, default=None)
-    parser.add_argument("--image-file", type=str, default="img/netflix.jpg", help="Location of image file")
+    parser.add_argument("--image-file", type=str, default="img/ciccio.jpeg", help="Location of image file")
     parser.add_argument("--prompt", type=str, default="Describe this image in detail.", help="Prompt for VLM")
     parser.add_argument("--conv-mode", type=str, default="qwen_2")
     parser.add_argument("--temperature", type=float, default=0.2)

@@ -1,0 +1,625 @@
+{
+  "metadata": {
+    "image_file": "img/ciccio.jpeg",
+    "prompt": "Describe this image in detail.",
+    "model_path": "checkpoints/llava-fastvithd_0.5b_stage3",
+    "max_new_tokens": 256,
+    "num_runs": 3,
+    "retention_ratios": [
+      0.3,
+      0.5,
+      0.7
+    ]
+  },
+  "experiments": [
+    {
+      "method": "baseline",
+      "keep_ratio": 1.0,
+      "runs": [
+        {
+          "ttft": 0.7978039169975091,
+          "total_time": 20.888680667005247,
+          "pruning_time": 0.0,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 256,
+          "token_reduction_percent": 0.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 10.96287523614248,
+          "output": "The image depicts a man holding a large, freshly made burger on a wooden cutting board. The man is wearing a black baseball cap with a colorful, possibly embroidered, logo on the front. He has a beard and mustache, and he is smiling broadly, showing his teeth. His attire includes a black hoodie, which appears to be of a casual style.\n\nThe burger itself is quite large and appears to be a gourmet or specialty burger. It is placed on a wooden cutting board, which has the word \"DESIGN\" written on it in capital letters. The burger consists of a sesame seed bun, which is lightly toasted, and is topped with a generous amount of melted cheese. There are also visible layers of meat, likely beef, and some other toppings that are not clearly identifiable but seem to include vegetables and possibly some sauce or condiments.\n\nThe background of the image shows a kitchen setting. There is a wall with a backsplash made of gray tiles, and a portion of a kitchen sink is visible. The countertop is also made of a similar material, likely stone or a similar durable material. There are some decorative elements on the wall, including what appears to be a small potted plant with colorful flowers, adding a touch of greenery to the scene.\n\nThe",
+          "pruning_method": "none",
+          "keep_ratio": 1.0
+        },
+        {
+          "ttft": 0.7303649999957997,
+          "total_time": 15.40705920799519,
+          "pruning_time": 0.0,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 256,
+          "token_reduction_percent": 0.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 14.863316672474717,
+          "output": "The image features a man holding a large, freshly prepared burger on a wooden cutting board. The man is smiling broadly and appears to be in a kitchen or a similar setting, as indicated by the background elements. He is wearing a black baseball cap with colorful designs on the front and a dark-colored hoodie. His facial expression suggests excitement or pride, possibly indicating that he is proud of the burger he is holding.\n\nThe burger itself is quite substantial, with a thick, sesame-seed bun that looks toasted to a golden-brown color. The bun is generously topped with a layer of sesame seeds, giving it a textured appearance. Inside the bun, there is a large patty that appears to be made from beef, as suggested by its size and color. The beef patty is topped with a layer of melted cheese, which is slightly browned and gooey, indicating it has been recently heated. Additionally, there are some other toppings visible, including what looks like caramelized onions or some other type of vegetable, adding to the overall flavor profile of the burger.\n\nThe cutting board on which the burger is placed is made of light-colored wood, with the word \"DESIGN\" visibly inscribed on it, suggesting it might be a branded or custom-made cutting board. The background",
+          "pruning_method": "none",
+          "keep_ratio": 1.0
+        },
+        {
+          "ttft": 0.724172832997283,
+          "total_time": 14.26334395899903,
+          "pruning_time": 0.0,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 256,
+          "token_reduction_percent": 0.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 16.055141112650468,
+          "output": "The image depicts a man holding a large, freshly made burger. The burger is placed on a wooden cutting board, which is resting on a kitchen counter. The man is wearing a black baseball cap with a colorful design on the front, a black hoodie, and is smiling broadly. His facial expression suggests excitement or pride in the burger.\n\nThe burger itself is quite large and appears to be a gourmet or specialty burger. It is placed on a sesame seed bun, which is golden brown and looks freshly toasted. The burger patty is dark brown, indicating it might be made from beef. There are visible layers of ingredients, including what appears to be a generous amount of melted cheese, which is likely cheddar or a similar variety. Additionally, there are slices of bacon and other toppings that are not distinctly identifiable but contribute to the burger's overall appearance.\n\nThe cutting board on which the burger is placed has the word \"DESIGN\" written on it, suggesting it might be a branded or branded kitchenware item. The background of the image shows a kitchen setting with a backsplash made of gray tiles, and there is a kitchen sink visible to the left side of the image. The overall ambiance of the kitchen is clean and modern, with a few decorative elements like a small plant in",
+          "pruning_method": "none",
+          "keep_ratio": 1.0
+        }
+      ]
+    },
+    {
+      "method": "attention",
+      "keep_ratio": 0.3,
+      "runs": [
+        {
+          "ttft": 0.10835654102265835,
+          "total_time": 19.750188124977285,
+          "pruning_time": 0.1380142080015503,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 11.594826264484677,
+          "output": "The image shows a close-up of a person's face, specifically focusing on their mouth and nose. The individual appears to be smiling broadly, revealing their teeth. The person's eyes are slightly squinted, which often happens when someone is genuinely smiling. The person's skin tone is light, and they have a noticeable amount of facial hair, including a beard and mustache.\n\nThe person is wearing a black hat with a wide brim, which casts a shadow over their face. The hat appears to be made of a soft, possibly woolen material. The background of the image is blurred, but it seems to be an outdoor setting with a stone or concrete wall. The wall has a light color, possibly beige or light gray, and there are some colorful elements visible, such as small, round, multi-colored objects that might be flowers or decorative items.\n\nThe person's mouth is open, and the teeth are visible, showing a broad smile. The mouth is slightly open, and the person's lips are relaxed, indicating a genuine smile. The person's nose is prominent in the image, and it is slightly rounded. The overall expression on the person's face is cheerful and friendly.\n\nThe image captures a moment of happiness and joy, as indicated by the person's wide",
+          "pruning_method": "attention",
+          "keep_ratio": 0.3
+        },
+        {
+          "ttft": 0.1251706669863779,
+          "total_time": 13.268177207995905,
+          "pruning_time": 0.008245292003266513,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 210,
+          "tokens_per_second": 15.827343628893203,
+          "output": "The image depicts a person sitting on a wooden bench. The individual is wearing a black hat and a black shirt. The person is smiling broadly, showing their teeth, and appears to be in a cheerful mood. The bench is made of light-colored wood and has a simple, rustic design. Behind the bench, there is a colorful background that includes various elements such as flowers, leaves, and possibly other objects, contributing to a vibrant and lively atmosphere. The colors in the background are bright and varied, suggesting a cheerful and lively environment.\n\nThe person's facial expression and the overall setting suggest a relaxed and happy atmosphere. The wooden bench and the colorful background create a contrast between the natural and the vibrant, adding depth and interest to the image. The person's attire and the setting suggest a casual, outdoor environment, possibly a park or a garden.\n\nIn summary, the image shows a person sitting on a wooden bench with a black hat and black shirt, smiling broadly. The background features a colorful, vibrant setting with various elements such as flowers, leaves, and possibly other objects, contributing to a cheerful and lively atmosphere. The overall composition of the image suggests a casual, outdoor environment.",
+          "pruning_method": "attention",
+          "keep_ratio": 0.3
+        },
+        {
+          "ttft": 0.11107895799796097,
+          "total_time": 14.586891708982876,
+          "pruning_time": 0.002379209006903693,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 15.699026534829049,
+          "output": "The image features a close-up view of a person's face, specifically focusing on their mouth and teeth. The individual is smiling broadly, revealing a set of white teeth. The teeth are prominently visible, with the upper teeth appearing to be slightly crooked, and the lower teeth are straight. The person's smile is broad and cheerful, with the teeth showing a mix of white and yellow hues, indicating a healthy, natural color.\n\nThe person's face is partially obscured by a wooden surface, which appears to be a table or a similar flat surface. The wood has a light brown color and shows some natural grain patterns, suggesting it is a piece of furniture or a decorative item. The background behind the person's face is blurred, making it difficult to discern specific details about the surroundings. However, the focus remains on the person's face and the wooden surface.\n\nThe image captures a moment of happiness and contentment, as indicated by the person's broad smile and the visible teeth. The wooden surface adds a natural and warm element to the composition, contrasting with the bright and cheerful expression of the person.\n\nGiven the details in the image, it can be inferred that the person is likely in a relaxed and happy state, possibly enjoying a moment of leisure or a casual gathering. The wooden",
+          "pruning_method": "attention",
+          "keep_ratio": 0.3
+        }
+      ]
+    },
+    {
+      "method": "attention",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.15232929200283252,
+          "total_time": 13.14898287502001,
+          "pruning_time": 0.12072737500420772,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.415795744554995,
+          "output": "The image depicts a person sitting in front of a wooden table. The individual is wearing a black hat with a wide brim and a beard. The person\u2019s facial expression is cheerful, with a broad smile that reveals their teeth. The hat appears to be slightly tilted, adding a casual and relaxed vibe to the image.\n\nThe wooden table in front of the person is light brown in color and has a smooth, polished surface. The table is rectangular in shape and seems to be made of a light-colored wood, possibly pine or a similar type. The table is positioned against a backdrop that is partially visible, featuring a wall with a light gray or off-white color. The wall has a subtle texture, possibly indicating a painted or plastered surface.\n\nIn the background, there is a colorful array of objects. These objects are arranged in a somewhat random pattern, with various colors and shapes. The colors include red, yellow, green, blue, and purple, among others. The arrangement of these objects is not uniform, suggesting a casual or artistic setting.\n\nThe person is seated on a chair that is partially visible in the image. The chair is not fully shown, but it appears to be a standard-sized chair, likely designed for comfort and support. The person\u2019s posture is relaxed,",
+          "pruning_method": "attention",
+          "keep_ratio": 0.5
+        },
+        {
+          "ttft": 0.1557976660260465,
+          "total_time": 13.37310508399969,
+          "pruning_time": 0.006802707997849211,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.1239213751478,
+          "output": "The image features a person sitting in front of a wooden table. The individual is wearing a black hat with a wide brim and has a full beard. The person is smiling and appears to be enjoying the moment. The hat is adorned with a colorful pattern, which includes multiple colors such as red, blue, green, yellow, and white. The person is dressed in a black shirt, which complements the hat.\n\nThe wooden table in front of the person is light brown and appears to be made of a smooth, polished wood. The table surface is smooth and uncluttered, with no visible objects or items on it. The background of the image is blurred, but it seems to be an indoor setting with a neutral-colored wall. The focus is primarily on the person and the table, making the background details less discernible.\n\nThe lighting in the image is bright, illuminating the person's face and the table clearly. The overall mood of the image is cheerful and relaxed, as indicated by the person's smile and the casual setting.\n\nGiven the details in the image, here is a markdown representation of the description:\n\n```markdown\n# Image Description\n\n- **Person**: \n  - Wearing a black hat with a wide brim\n  - Full beard",
+          "pruning_method": "attention",
+          "keep_ratio": 0.5
+        },
+        {
+          "ttft": 0.14987449999898672,
+          "total_time": 12.729701667005429,
+          "pruning_time": 0.009822666004765779,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.989423946482056,
+          "output": "The image depicts a person sitting in front of a wooden table. The individual has a beard and is wearing a black hat. The hat appears to be a fedora, characterized by its wide brim and a stiff crown. The person is smiling, showing their teeth, which adds a cheerful and friendly demeanor to the image.\n\nThe wooden table in front of the person is light brown and appears to be made of a light-colored wood, possibly pine or a similar type of wood. The table surface is smooth and unpolished, with no visible scratches or marks. The table is positioned against a backdrop that seems to be a wall, which is partially visible and appears to be a light color, possibly white or a very light shade of gray.\n\nIn the background, there is a colorful array of flowers. The flowers are vibrant and varied, with different colors such as red, yellow, orange, and green. They are arranged in a somewhat random pattern, creating a lively and cheerful atmosphere. The flowers are placed on the wall or a shelf behind the table, adding a touch of natural beauty to the scene.\n\nThe lighting in the image is bright and even, suggesting that the photo was taken in a well-lit environment, possibly indoors. The overall composition of the image is balanced",
+          "pruning_method": "attention",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "attention",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.1912609160062857,
+          "total_time": 13.691361250006594,
+          "pruning_time": 0.11949979199562222,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 16.725875230258037,
+          "output": "The image depicts a person sitting at a table. The individual is wearing a black hat and a black jacket. The person has a beard and is smiling, showing their teeth. The facial expression suggests a positive and friendly demeanor. The person's hands are resting on the table, and they appear to be engaged in an activity or conversation.\n\nThe table in front of the person is made of light-colored wood and has a smooth surface. On the table, there is a wooden cutting board that has a light brown color. On the cutting board, there is a sandwich with visible ingredients. The sandwich appears to have a variety of fillings, including what looks like meat, cheese, and possibly vegetables. The sandwich is cut in half, and the person seems to be in the process of eating it.\n\nIn the background, there is a wall that appears to be made of a light-colored material, possibly concrete or a similar substance. The wall has a smooth surface and is plain without any decorations or patterns. There are no other objects or people visible in the background.\n\nThe overall setting suggests a casual and comfortable environment, possibly a home or a casual dining area. The focus is on the person and their activity, with the background elements being minimal and unobtrusive.\n\nGiven the details",
+          "pruning_method": "attention",
+          "keep_ratio": 0.7
+        },
+        {
+          "ttft": 0.19154633401194587,
+          "total_time": 13.464504625007976,
+          "pruning_time": 0.006242041999939829,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.00768103823681,
+          "output": "The image features a person sitting at a wooden table. The individual is wearing a black jacket and has a beard. The person is smiling and appears to be in a cheerful mood. The table is made of light-colored wood and has a smooth surface. On the table, there is a wooden bowl filled with what appears to be a mixture of ingredients, possibly a salad or a dish with various components. The bowl is placed centrally on the table, and the ingredients inside the bowl are not clearly visible.\n\nIn the background, there is a wall that is painted in a light color, possibly white or off-white. The wall has a simple, clean design with no visible decorations or patterns. The wall and the table are the main elements in the background, providing a neutral backdrop that highlights the person and the table.\n\nThe overall setting suggests a casual and comfortable environment, possibly a home or a casual dining area. The person's attire and the presence of the bowl with ingredients indicate that they might be preparing or enjoying a meal. The image captures a moment of everyday life, focusing on the person's expression and the simple act of eating or preparing food.\n\n### Analysis and Description\n\n1. **Person's Appearance**:\n   - The person is wearing a black jacket.\n   -",
+          "pruning_method": "attention",
+          "keep_ratio": 0.7
+        },
+        {
+          "ttft": 0.18917683299514465,
+          "total_time": 20.116940208012238,
+          "pruning_time": 0.0034436660062056035,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 11.38344090264747,
+          "output": "The image depicts a person sitting in front of a wooden table. The individual is wearing a black hat and a black jacket. The person has a beard and is smiling. The wooden table is light-colored, possibly a light brown or beige, and appears to be made of wood. The table is rectangular and has a smooth surface. \n\nIn the background, there is a colorful floral arrangement. The flowers are vibrant and include a variety of colors such as red, pink, yellow, and green. The arrangement is placed on a surface that appears to be a table or a shelf, but the exact nature of the surface is not clear from the image.\n\nThe person's attire and the setting suggest a casual or informal environment. The combination of the wooden table, the floral arrangement, and the person's attire indicates that this might be a setting in a home or a casual dining area.\n\n### Analysis and Description\n\n1. **Person's Appearance**:\n   - The person is wearing a black hat and a black jacket.\n   - They have a beard and are smiling.\n   - The person's attire is casual, suitable for a relaxed setting.\n\n2. **Setting**:\n   - The person is sitting in front of a wooden table.\n   - The table is light-colored",
+          "pruning_method": "attention",
+          "keep_ratio": 0.7
+        }
+      ]
+    },
+    {
+      "method": "similarity",
+      "keep_ratio": 0.3,
+      "runs": [
+        {
+          "ttft": 0.10278950000065379,
+          "total_time": 13.292517207999481,
+          "pruning_time": 0.9867071250046138,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.2277377126273,
+          "output": "The image depicts a man standing indoors, holding a large burger. The man is wearing a black baseball cap with a colorful, possibly patterned design on the front. He is also wearing a dark-colored t-shirt. The background includes a wall with a light-colored, possibly concrete or stone, texture. There is a small, colorful arrangement of flowers or plants placed on top of the wall, adding a touch of color and liveliness to the scene.\n\nThe man is holding the burger with both hands, and it appears to be quite large, suggesting that it might be a burger or a sandwich of considerable size. The burger consists of multiple layers, with visible ingredients such as meat, cheese, and possibly vegetables. The man seems to be presenting the burger, possibly for a photograph or to show it off.\n\nThe setting appears to be a casual indoor environment, likely a caf\u00e9 or a restaurant, given the presence of the wall decorations and the man's attire. The lighting in the image is bright, illuminating the man and the burger clearly, making the details of the food and the man's clothing easily discernible.\n\nIn summary, the image shows a man in a casual setting, holding a large burger, with a colorful background that includes a wall with decorative elements. The man is",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.3
+        },
+        {
+          "ttft": 0.10627095800009556,
+          "total_time": 12.749545916012721,
+          "pruning_time": 0.5593987920146901,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.961423999609956,
+          "output": "The image depicts a person holding a burger. The individual is wearing a black baseball cap with a colorful, possibly patterned design on the front. The cap is worn in a standard manner, covering the top of the head. The person is also wearing a dark-colored t-shirt, which is not fully visible in the image.\n\nThe burger itself is prominently displayed in the foreground. It appears to be a large, thick burger with a generous amount of toppings. The toppings include what looks like a layer of melted cheese, possibly cheddar or a similar type, which is slightly browned and gooey in texture. There are also visible pieces of meat, which could be beef or another type of meat, and a layer of lettuce or another green vegetable. The burger is held upright, with the top bun slightly lifted, showcasing the layers of ingredients inside.\n\nThe background of the image features a modern, minimalist interior. The walls are made of light-colored stone or concrete, giving the space a clean and contemporary look. There is a small, decorative element above the person's head, which appears to be a small, colorful arrangement of flowers or plants, adding a touch of nature to the otherwise sleek and modern setting.\n\nThe lighting in the image is bright and even, highlighting the textures and",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.3
+        },
+        {
+          "ttft": 0.10507795799640007,
+          "total_time": 13.711691667005653,
+          "pruning_time": 0.8570692090142984,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 16.701075663117564,
+          "output": "The image depicts a man standing indoors, holding a large burger in his right hand. The man is wearing a black baseball cap with a colorful design on the front, and a black t-shirt. He is also wearing a pair of jeans. The background features a modern, minimalist interior with a light-colored wall and a decorative element, possibly a piece of artwork or a plant, hanging on the wall behind him. The man appears to be in a casual setting, possibly a caf\u00e9 or a casual dining restaurant.\n\nThe burger he is holding is quite large, almost as tall as he is, and appears to be a gourmet or specialty burger. It is topped with what looks like a generous amount of cheese, possibly cheddar or a similar type, and a slice of tomato. There might be additional toppings, but they are not clearly visible. The burger is placed on a white plate, which contrasts with the dark color of the burger and the man's attire.\n\nThe man's expression is neutral, and he seems to be posing for the photo, possibly to showcase the size of the burger or to highlight the food item. The lighting in the image is even, with no harsh shadows, suggesting that the photo was taken in a well-lit environment, likely with artificial lighting.\n\nIn summary",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.3
+        }
+      ]
+    },
+    {
+      "method": "similarity",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.17177170899230987,
+          "total_time": 14.595467667008052,
+          "pruning_time": 1.107806541986065,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 15.689802151227887,
+          "output": "The image depicts a man holding a large hamburger in his right hand. He is wearing a black baseball cap with a colorful design on the front, a dark hoodie, and a pair of casual shoes. The man has a beard and is smiling broadly, showing his teeth, which adds a cheerful and friendly demeanor to the image. His eyes are slightly squinted, possibly due to the lighting or the camera's focus.\n\nThe hamburger he is holding is quite large, almost as tall as the man himself, and appears to be a beef patty topped with melted cheese, lettuce, and possibly other toppings. The bun looks soft and slightly toasted, with a golden-brown color indicating it might be freshly baked. The man is holding the hamburger with his right hand, and his left hand is slightly raised, possibly to balance the weight of the burger.\n\nIn the background, there is a modern kitchen setting. The kitchen features a gray tiled backsplash and a countertop with a sleek, metallic finish. There is a stainless steel sink visible, and a small portion of a white wall is seen. Above the countertop, there is a decorative element, possibly a piece of artwork or a plant, adding a touch of color and life to the space. The overall ambiance of the kitchen",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.5
+        },
+        {
+          "ttft": 0.14951920800376683,
+          "total_time": 13.820040374994278,
+          "pruning_time": 0.7813256670197006,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 16.570139723639905,
+          "output": "The image depicts a man holding a large hamburger in his right hand. The man is wearing a black baseball cap with colorful patterns on the front, and a dark hoodie. He has a beard and is smiling broadly, showing his teeth. The background of the image appears to be an indoor setting, possibly a kitchen or a dining area, with a modern design. The walls are made of light-colored tiles, and there is a decorative element on the wall behind the man, which looks like a colorful arrangement of flowers or small plants. The lighting in the room is bright, suggesting it might be daytime or the room is well-lit.\n\nThe hamburger the man is holding is quite large, almost as tall as his head, and appears to be a gourmet or specialty burger. It is topped with various ingredients, but the specific details of the toppings are not clearly visible. The man's expression and the way he is holding the burger suggest that he is proud or excited about it.\n\nGiven the context, it is likely that the man is either a chef, a food enthusiast, or a food blogger showcasing his culinary creation. The image captures a moment of pride and enjoyment, emphasizing the size and appeal of the burger.\n\nIn summary, the image shows:\n- A man wearing a black baseball",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.5
+        },
+        {
+          "ttft": 0.1571317909983918,
+          "total_time": 14.416747749986826,
+          "pruning_time": 0.8075592079840135,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 15.884303725866971,
+          "output": "The image features a man holding a large burger in his right hand. He is smiling broadly, showing his teeth, and appears to be in a cheerful mood. He is wearing a black baseball cap with a colorful, possibly floral, design on the front. The cap is worn in a casual manner, covering his forehead and part of his hair. He is also wearing a dark-colored hoodie, which is partially visible.\n\nThe man is standing in what appears to be a kitchen or a food preparation area. The background includes a wall with a light-colored, possibly gray or beige, tile or paneling. There is a small, dark-colored object, possibly a kitchen appliance or utensil, mounted on the wall. Above the man, there is a decorative element that includes a variety of colorful flowers or plants, adding a touch of vibrancy to the scene.\n\nThe burger he is holding is quite large, almost as tall as the man himself, and appears to be a beef patty topped with various ingredients. The bun looks toasted and is generously filled with what seems to be cheese, lettuce, and possibly other toppings. The man's expression and the way he is holding the burger suggest that he is proud or excited about the food.\n\nThe overall setting and the man's attire suggest a",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "similarity",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.203928792005172,
+          "total_time": 13.763891542010242,
+          "pruning_time": 1.3377883749781176,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 16.637736449829227,
+          "output": "The image depicts a man holding a large hamburger in his right hand. The man is wearing a black baseball cap with a colorful design on the front and a dark-colored hoodie. He is smiling broadly, showing his teeth, and appears to be in a cheerful mood. His facial expression suggests excitement or pride in the hamburger he is holding.\n\nThe hamburger itself is quite large and appears to be a gourmet or specialty burger. It is placed on a wooden cutting board, which is held in his right hand. The burger consists of a sesame seed bun, which looks toasted to a golden-brown color. Inside the bun, there is a generous portion of cooked beef patty, which appears to be well-cooked and juicy. The beef patty is topped with a layer of melted cheese, which looks creamy and slightly browned, indicating it has been heated to perfection. Additionally, there are some slivers of what looks like bacon or another type of meat on top of the cheese, adding to the visual appeal of the burger.\n\nThe background of the image shows a kitchen or dining area with a modern, clean design. The wall behind the man is made of light-colored tiles, and there is a small, dark-colored sink visible to the right side of the image. The overall setting",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.7
+        },
+        {
+          "ttft": 0.2028511249809526,
+          "total_time": 13.442590041988296,
+          "pruning_time": 0.9956459169916343,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.03540755797151,
+          "output": "The image depicts a man holding a large hamburger in his right hand. The man is wearing a black baseball cap with a colorful design on the front, a dark hoodie, and a pair of glasses. He has a beard and is smiling broadly, looking directly at the camera. The hamburger he is holding is placed on a wooden cutting board, which is positioned in front of him.\n\nThe hamburger consists of a large, round sesame seed bun that appears to be toasted to a golden-brown color. Inside the bun, there is a generous portion of what looks like a beef patty, which is cooked to a medium-rare or medium level. The beef patty is topped with a layer of melted cheese, which appears to be a type of cheddar or a similar variety, given its yellowish hue. Additionally, there are some slivers of what could be onions or another type of vegetable, adding to the texture and flavor of the burger.\n\nThe background of the image shows a kitchen setting. There is a modern kitchen counter with a light-colored backsplash made of rectangular tiles. On the counter, there is a stainless steel sink with a faucet, and a small section of a kitchen backsplash with a decorative element, possibly a piece of artwork or a plant, adding a",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.7
+        },
+        {
+          "ttft": 0.20383387501351535,
+          "total_time": 13.385248124977807,
+          "pruning_time": 1.0025784169847611,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.108386625472413,
+          "output": "The image depicts a person holding a large burger. The individual is wearing a black baseball cap with colorful patterns on the front and a dark-colored hoodie. The person is smiling and looking directly at the camera, giving a sense of enthusiasm or pride in the burger they are holding.\n\nThe burger itself is quite large and appears to be a gourmet or specialty type, given its size and the generous toppings. The bun is toasted to a golden-brown color and is sprinkled with sesame seeds. The burger patty is dark brown, suggesting it might be made from beef or another type of meat. The patty is topped with what appears to be a layer of melted cheese, possibly cheddar or a similar variety, which is slightly browned in places. There are also visible pieces of bacon or ham, adding to the gourmet appeal of the burger. The burger is placed on a wooden cutting board, which is held by the person's left hand. The cutting board has a circular hole in the center, likely for easy cutting or serving.\n\nIn the background, there is a kitchen setting with a modern, clean design. The wall behind the person is made of light-colored tiles, and there is a small section of a kitchen counter visible. The counter appears to be made of a dark",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.7
+        }
+      ]
+    },
+    {
+      "method": "norm",
+      "keep_ratio": 0.3,
+      "runs": [
+        {
+          "ttft": 0.11301112498040311,
+          "total_time": 13.255660374998115,
+          "pruning_time": 0.11826874999678694,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 17.275638747649534,
+          "output": "The image depicts a man holding a large, freshly prepared burger on a wooden cutting board. The man is smiling broadly, giving a sense of satisfaction and enjoyment. He is wearing a black cap with a colorful design on the front, a black hoodie, and appears to be in a kitchen or a similar setting. The background includes a kitchen counter and a sink, suggesting that the photo was taken in a domestic environment.\n\nThe burger itself is quite substantial, with a thick, golden-brown bun that looks freshly toasted. The bun is generously sprinkled with sesame seeds, adding a touch of texture and flavor. The burger patty is substantial, indicating a hearty and filling meal. On top of the patty, there are several layers of ingredients. The most prominent layer is a layer of melted cheese, which appears to be a type of cheddar or a similar variety, given its yellowish hue and smooth texture. There is also a layer of what looks like bacon, adding a crispy and savory element to the burger. Additionally, there are other toppings that are not clearly identifiable but seem to include lettuce, tomato, and possibly some type of sauce or condiment, contributing to the overall flavor profile of the burger.\n\nThe man's expression and the way he is holding the burger suggest",
+          "pruning_method": "norm",
+          "keep_ratio": 0.3
+        },
+        {
+          "ttft": 0.11596450000070035,
+          "total_time": 14.904046583018498,
+          "pruning_time": 0.0015449159836862236,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 15.364954660093455,
+          "output": "The image depicts a man holding a large, freshly prepared burger. The burger is placed on a wooden cutting board, which is resting on a kitchen counter. The man is smiling and appears to be happy, possibly proud of his culinary creation. He is wearing a black cap with a colorful design on the front and a black hoodie. His facial expression and body language suggest that he is enjoying the moment.\n\nThe burger itself is quite substantial, with a thick, golden-brown bun that appears to be lightly toasted. The bun is topped with a generous amount of sesame seeds, adding a touch of texture and flavor. The burger patty is substantial, likely made from a beef patty, and is topped with a variety of ingredients. These include what appears to be melted cheese, which is slightly browned and gooey, indicating it has been recently cooked. There are also slices of bacon, adding a savory and slightly smoky flavor to the burger. Additionally, there are some vegetables, possibly lettuce or onions, adding a fresh element to the burger. The burger is garnished with a drizzle of sauce, likely a type of mayonnaise or aioli, enhancing its flavor profile.\n\nThe background of the image shows a kitchen setting, with a white wall and a gray countert",
+          "pruning_method": "norm",
+          "keep_ratio": 0.3
+        },
+        {
+          "ttft": 0.10794358400744386,
+          "total_time": 14.754671582981246,
+          "pruning_time": 0.010249666986055672,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 76,
+          "token_reduction_percent": 70.3125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 15.520508112436723,
+          "output": "The image depicts a man holding a large, freshly prepared burger on a wooden cutting board. The man is wearing a black cap with a colorful design on the front, a black hoodie, and has a beard. He is smiling broadly, showing his teeth, and appears to be in a cheerful mood. The burger is quite large and appears to be a beef patty topped with a sesame seed bun. The beef patty is well-cooked and has a rich, brown color, indicating it has been cooked to perfection. There are visible layers of toppings on the burger, including what looks like melted cheese, possibly some type of meat, and a generous amount of sauce or condiments. The sesame seeds on the bun are evenly distributed, adding to the visual appeal of the burger.\n\nIn the background, there is a kitchen setting with a gray countertop and a white wall. There is a small, round, silver-colored object, possibly a kitchen appliance or a decorative item, mounted on the wall. Additionally, there is a small, green plant with yellow flowers placed in a pot, adding a touch of color and freshness to the scene. The overall setting suggests a casual, homey environment, possibly a kitchen or a dining area.\n\nThe man's attire and the presentation of the",
+          "pruning_method": "norm",
+          "keep_ratio": 0.3
+        }
+      ]
+    },
+    {
+      "method": "norm",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.16028183299931698,
+          "total_time": 15.939412500010803,
+          "pruning_time": 0.012774416012689471,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 14.366903422559947,
+          "output": "The image depicts a man holding a large hamburger on a wooden cutting board. The man is smiling broadly and appears to be in a cheerful mood. He is wearing a black baseball cap with a colorful pattern on the front, a black hoodie, and a pair of jeans. The cap is tilted slightly to one side, revealing a small portion of his face. The man's facial expression is one of happiness and excitement, with his eyes squinting slightly and his mouth open in a wide smile.\n\nThe cutting board on which the hamburger is placed is made of light-colored wood and has a smooth, polished surface. The cutting board is rectangular in shape and has a handle on one side, which the man is holding in his left hand. The handle is designed to be ergonomic, allowing for easy gripping.\n\nThe hamburger itself is quite large and appears to be a gourmet or specialty burger. It is placed on a sesame seed bun, which is lightly toasted and has a golden-brown color. The burger patty is dark brown, indicating it might be made from beef or another type of meat. The patty is topped with a generous amount of melted cheese, which appears to be a blend of cheddar and other cheeses, given its creamy texture and color. There are also visible bits",
+          "pruning_method": "norm",
+          "keep_ratio": 0.5
+        },
+        {
+          "ttft": 0.18702558299992234,
+          "total_time": 15.888406540994765,
+          "pruning_time": 0.004959083016728982,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 14.413024956854008,
+          "output": "The image depicts a man holding a large, freshly prepared burger. The man is wearing a black baseball cap with a colorful design on the front and a black hoodie. He is smiling broadly and appears to be proud of the burger he is holding. The burger is placed on a wooden cutting board, which is rectangular in shape and has a smooth, light brown surface. The cutting board has the word \"DESIGN\" written on it in capital letters, indicating that it might be a branded or branded kitchenware item.\n\nThe burger itself is quite substantial, with a thick, golden-brown bun that is sprinkled with sesame seeds. Inside the bun, there is a generous portion of beef patty, which appears to be cooked to a medium-rare doneness. The beef patty is topped with a layer of melted cheese, which looks creamy and slightly browned, suggesting it has been recently heated. Additionally, there are some slivers of bacon on top of the cheese, adding a crispy texture and savory flavor to the burger. The burger also includes some greens, likely lettuce, which are lightly wilted and add a fresh element to the overall composition.\n\nThe background of the image shows a kitchen setting. There is a white wall and a section of a kitchen counter visible.",
+          "pruning_method": "norm",
+          "keep_ratio": 0.5
+        },
+        {
+          "ttft": 0.1815583750139922,
+          "total_time": 14.116939625004306,
+          "pruning_time": 0.004358917009085417,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 16.22164619832963,
+          "output": "The image depicts a man holding a large, freshly prepared burger in a wooden cutting board. The man is smiling and appears to be proud of his creation. He is wearing a black baseball cap with a colorful design on the front and a black hoodie. The cutting board he is holding is made of light-colored wood and has the word \"DESIGN\" embossed on it. The burger itself is quite substantial, with a large sesame seed bun that is slightly toasted on the edges. The burger patty is dark brown, indicating it might be made from beef. On top of the patty, there are several layers of ingredients. These include a generous amount of melted cheese, which appears to be a blend of cheddar and mozzarella, given its yellowish hue. There is also a layer of what looks like bacon, adding a crispy texture to the burger. Additionally, there are some green leafy vegetables, possibly lettuce or spinach, and a slice of tomato, contributing to the overall flavor and nutritional value of the burger. The man is holding the cutting board with both hands, showcasing the burger prominently. The background of the image is somewhat blurred, but it appears to be an indoor setting, possibly a kitchen or dining area, with a hint of a kitchen counter and some",
+          "pruning_method": "norm",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "norm",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.19249495799886063,
+          "total_time": 13.82002775001456,
+          "pruning_time": 0.018045000004349276,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 16.570154860923395,
+          "output": "The image depicts a man holding a large, freshly prepared burger on a wooden cutting board. The man is wearing a black baseball cap with a colorful design on the front, a black hoodie, and has a beard. He is smiling broadly, giving a sense of excitement or pride in the burger.\n\nThe burger itself is quite large and appears to be a gourmet or specialty burger. It is placed on a wooden cutting board, which has the word \"DESIGN\" written on it. The burger consists of a sesame seed bun, which is lightly toasted. Inside the bun, there is a generous serving of what appears to be a beef patty, which is cooked to a medium-rare doneness. The beef patty is topped with a layer of melted cheese, which looks to be a blend of cheddar and possibly other varieties, given the yellowish hue. Additionally, there are slivers of onion and possibly some other vegetables or garnishes on the burger, adding to its visual appeal.\n\nThe background of the image includes a kitchen setting with a tiled backsplash. There is a stainless steel sink visible, indicating that the photo was likely taken in a kitchen or a similar environment. The overall ambiance suggests a casual, homey atmosphere, possibly in a small eatery or a",
+          "pruning_method": "norm",
+          "keep_ratio": 0.7
+        },
+        {
+          "ttft": 0.2009448339813389,
+          "total_time": 14.360641875013243,
+          "pruning_time": 0.0018964580085594207,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 15.946362425376535,
+          "output": "The image depicts a man holding a large burger on a wooden cutting board. The man is wearing a black cap and a black hoodie. He is smiling broadly and looking directly at the camera. The cutting board is rectangular and made of light-colored wood. The burger is placed on the cutting board, and it appears to be a large, beef patty topped with sesame seeds on the bun. There are visible layers of ingredients on the burger, including what looks like melted cheese, possibly bacon or another type of meat, and some greens, likely lettuce or spinach. The man is holding the cutting board with his left hand, and the burger is positioned towards the center of the board.\n\nIn the background, there is a kitchen setting with a tiled backsplash. The tiles are grey, and there is a small section of a black countertop visible. There are also some decorative elements, such as a small, colorful arrangement of flowers or plants, placed on top of the backsplash. The overall setting suggests a casual, home-like environment, possibly a kitchen or dining area.\n\nThe man's attire and the presentation of the burger suggest that he might be proud of the meal he is about to enjoy. The large size of the burger indicates that it could be a specialty or a gourmet burger",
+          "pruning_method": "norm",
+          "keep_ratio": 0.7
+        },
+        {
+          "ttft": 0.20057529100449756,
+          "total_time": 18.954916125017917,
+          "pruning_time": 0.002792499988572672,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 229,
+          "tokens_per_second": 12.081298513252246,
+          "output": "The image depicts a man holding a large, appetizing burger on a wooden cutting board. The man is wearing a black baseball cap with a colorful pattern on the front and a black hoodie. He has a beard and is smiling broadly, giving a sense of enjoyment and pride in the burger.\n\nThe burger itself is quite large and appears to be a gourmet or specialty burger. It is placed on a wooden cutting board, which has the word \"DESIGN\" printed on it. The burger consists of a sesame seed bun, and the top bun is lightly toasted. The burger patty is a large, well-cooked beef patty, likely made from a combination of beef and possibly other ingredients such as bacon or sausage. The patty is topped with a generous amount of melted cheese, which appears to be a blend of cheddar and possibly other types of cheese. There are also some vegetables, possibly onions or peppers, and a drizzle of sauce, likely barbecue sauce or a similar condiment, adding to the visual appeal and flavor profile of the burger.\n\nThe background of the image shows a kitchen setting. There is a tiled wall with a mix of light and dark tiles, and a modern kitchen sink is visible. The countertop appears to be made of a light-colored material",
+          "pruning_method": "norm",
+          "keep_ratio": 0.7
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "method": "baseline",
+      "method_name": "Baseline (No Pruning)",
+      "keep_ratio": 1.0,
+      "ttft_mean": 0.7507805833301973,
+      "ttft_std": 0.040840925123274155,
+      "total_time_mean": 16.85302794466649,
+      "tokens_per_second_mean": 13.960444340422555,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 256,
+      "token_reduction_percent": 0.0,
+      "sample_output": "The image depicts a man holding a large, freshly made burger on a wooden cutting board. The man is wearing a black baseball cap with a colorful, possi..."
+    },
+    {
+      "method": "attention",
+      "method_name": "Attention-Based",
+      "keep_ratio": 0.3,
+      "ttft_mean": 0.1148687220023324,
+      "ttft_std": 0.009024989827560979,
+      "total_time_mean": 15.868419013985354,
+      "tokens_per_second_mean": 14.373732142735642,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 76,
+      "token_reduction_percent": 70.3125,
+      "sample_output": "The image shows a close-up of a person's face, specifically focusing on their mouth and nose. The individual appears to be smiling broadly, revealing ...",
+      "ttft_improvement_percent": 84.70009420158212,
+      "total_time_improvement_percent": 5.8423265772411925,
+      "speedup_factor": 1.0620483319613232
+    },
+    {
+      "method": "attention",
+      "method_name": "Attention-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.15266715267595524,
+      "ttft_std": 0.0029760017341831286,
+      "total_time_mean": 13.08392987534171,
+      "tokens_per_second_mean": 17.509713688728283,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a person sitting in front of a wooden table. The individual is wearing a black hat with a wide brim and a beard. The person\u2019s facial...",
+      "ttft_improvement_percent": 79.66554329378395,
+      "total_time_improvement_percent": 22.36451563303551,
+      "speedup_factor": 1.2880707941142449
+    },
+    {
+      "method": "attention",
+      "method_name": "Attention-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.19066136100445874,
+      "ttft_std": 0.0012935352400755456,
+      "total_time_mean": 15.757602027675603,
+      "tokens_per_second_mean": 15.03899905704744,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a person sitting at a table. The individual is wearing a black hat and a black jacket. The person has a beard and is smiling, showin...",
+      "ttft_improvement_percent": 74.60491583855934,
+      "total_time_improvement_percent": 6.499875990163292,
+      "speedup_factor": 1.0695172980677488
+    },
+    {
+      "method": "similarity",
+      "method_name": "Similarity-Based",
+      "keep_ratio": 0.3,
+      "ttft_mean": 0.10471280533238314,
+      "ttft_std": 0.0017692201110936633,
+      "total_time_mean": 13.251251597005952,
+      "tokens_per_second_mean": 17.29674579178494,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 76,
+      "token_reduction_percent": 70.3125,
+      "sample_output": "The image depicts a man standing indoors, holding a large burger. The man is wearing a black baseball cap with a colorful, possibly patterned design o...",
+      "ttft_improvement_percent": 86.05280854921499,
+      "total_time_improvement_percent": 21.37168679412532,
+      "speedup_factor": 1.2718065022985707
+    },
+    {
+      "method": "similarity",
+      "method_name": "Similarity-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.15947423599815616,
+      "ttft_std": 0.011309674464544414,
+      "total_time_mean": 14.277418597329719,
+      "tokens_per_second_mean": 16.048081866911588,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a man holding a large hamburger in his right hand. He is wearing a black baseball cap with a colorful design on the front, a dark ho...",
+      "ttft_improvement_percent": 78.75887582350828,
+      "total_time_improvement_percent": 15.28276910115656,
+      "speedup_factor": 1.180397410762929
+    },
+    {
+      "method": "similarity",
+      "method_name": "Similarity-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.20353793066654666,
+      "ttft_std": 0.0005966815282456203,
+      "total_time_mean": 13.530576569658782,
+      "tokens_per_second_mean": 16.927176877757717,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a man holding a large hamburger in his right hand. The man is wearing a black baseball cap with a colorful design on the front and a...",
+      "ttft_improvement_percent": 72.88982491213021,
+      "total_time_improvement_percent": 19.714269660717974,
+      "speedup_factor": 1.2455513523686814
+    },
+    {
+      "method": "norm",
+      "method_name": "Norm-Based",
+      "keep_ratio": 0.3,
+      "ttft_mean": 0.11230640299618244,
+      "ttft_std": 0.0040566301469325975,
+      "total_time_mean": 14.304792846999286,
+      "tokens_per_second_mean": 16.05370050672657,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 76,
+      "token_reduction_percent": 70.3125,
+      "sample_output": "The image depicts a man holding a large, freshly prepared burger on a wooden cutting board. The man is smiling broadly, giving a sense of satisfaction...",
+      "ttft_improvement_percent": 85.04138153146809,
+      "total_time_improvement_percent": 15.120339834680266,
+      "speedup_factor": 1.1781385529257593
+    },
+    {
+      "method": "norm",
+      "method_name": "Norm-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.1762885970044105,
+      "ttft_std": 0.014129223659721113,
+      "total_time_mean": 15.314919555336624,
+      "tokens_per_second_mean": 15.00052485924786,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a man holding a large hamburger on a wooden cutting board. The man is smiling broadly and appears to be in a cheerful mood. He is we...",
+      "ttft_improvement_percent": 76.51929193181095,
+      "total_time_improvement_percent": 9.12659964951066,
+      "speedup_factor": 1.100432025370574
+    },
+    {
+      "method": "norm",
+      "method_name": "Norm-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.1980050276615657,
+      "ttft_std": 0.004775436238589121,
+      "total_time_mean": 15.711861916681906,
+      "tokens_per_second_mean": 14.865938599850725,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a man holding a large, freshly prepared burger on a wooden cutting board. The man is wearing a black baseball cap with a colorful de...",
+      "ttft_improvement_percent": 73.62677830807965,
+      "total_time_improvement_percent": 6.7712818831807065,
+      "speedup_factor": 1.0726308590309697
+    }
+  ]
+}

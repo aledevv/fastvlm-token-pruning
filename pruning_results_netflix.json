@@ -1,0 +1,259 @@
+{
+  "metadata": {
+    "image_file": "img/netflix.jpg",
+    "prompt": "Describe this image in detail.",
+    "model_path": "checkpoints/llava-fastvithd_0.5b_stage3",
+    "max_new_tokens": 128,
+    "num_runs": 1,
+    "retention_ratios": [
+      0.5,
+      0.7
+    ]
+  },
+  "experiments": [
+    {
+      "method": "baseline",
+      "keep_ratio": 1.0,
+      "runs": [
+        {
+          "ttft": 0.7363615829963237,
+          "total_time": 10.10527466700296,
+          "pruning_time": 0.0,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 256,
+          "token_reduction_percent": 0.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 9.99478028338984,
+          "output": "The image depicts a scene centered around a television screen displaying a TV show menu. The TV screen is mounted on a wall and is showing the menu of the popular TV show \"F.R.I.E.N.D.S.\" The menu is divided into several sections, each listing different episodes and their respective durations. The show's title is prominently displayed at the top of the menu, with the words \"F.R.I.E.N.D.S.\" in large, bold letters. Below the title, there is a brief description of the show, which includes a tagline: \"Love, laughter, and the best friends you could ask for. Just like real",
+          "pruning_method": "none",
+          "keep_ratio": 1.0
+        }
+      ]
+    },
+    {
+      "method": "attention",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.14787612497457303,
+          "total_time": 10.541738125000848,
+          "pruning_time": 0.10414062498603016,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 9.580962721931767,
+          "output": "The image depicts a black and white advertisement for a coffee brand, prominently featuring a large, bold, red \"FRIEDEN\" logo at the top. Below the logo, there is a list of various coffee brands and their respective logos, arranged in a vertical format. The brands listed include \"FRIEDEN,\" \"SUIATS,\" \"NETFLIX,\" \"SAFE,\" \"SOUTHERN,\" \"AMERICA'S,\" \"LINE,\" and \"KILLER.\"\n\nThe advertisement is divided into two main sections. The left section contains a list of coffee brands, each with a corresponding logo and name. The right section",
+          "pruning_method": "attention",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "attention",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.19040779100032523,
+          "total_time": 7.538322500011418,
+          "pruning_time": 0.10657970799366012,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 13.39820629852955,
+          "output": "The image depicts a scene with a focus on a large, black, rectangular object that appears to be a digital display or a screen. The screen is divided into multiple sections, each containing different images and text. The background of the screen is a light brown color, and the text on the screen is primarily in white, with some sections in red and blue. The text on the screen is organized in a grid-like pattern, with each section containing different images and text blocks.\n\nAt the top of the screen, there are several images of people. These images are arranged in a row and include various individuals, some of whom are smiling and appear",
+          "pruning_method": "attention",
+          "keep_ratio": 0.7
+        }
+      ]
+    },
+    {
+      "method": "similarity",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.1515898330253549,
+          "total_time": 7.2478747079730965,
+          "pruning_time": 0.8114862079964951,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 13.935119475629724,
+          "output": "The image depicts a television screen displaying the show \"F.R.I.E.N.D.S.\" which is a popular American sitcom. The TV is mounted on a wall, and the screen is turned on, showing the show's logo and a brief synopsis. The show's title, \"F.R.I.E.N.D.S.,\" is prominently displayed at the top of the screen in large, bold letters. Below the title, there is a brief description of the show's premise, which includes:\n\n- \"Love, laughter, and the best friends you could ask for.\"\n- \"Just like real life. But with really nice apartments.\"\n\nThe synopsis",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "similarity",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.1872902500035707,
+          "total_time": 6.890153874992393,
+          "pruning_time": 0.9830273749830667,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 14.658598607873834,
+          "output": "The image depicts a television screen displaying the Netflix interface, specifically the \"Friends\" series. The screen shows a list of the show's episodes, with the title \"F-R-E-N-E-N-O-S\" prominently displayed at the top. The list includes the following episodes:\n\n1. \"Love, laughter, and the best friends you could ask for. Just like real life.\"\n2. \"But with really nice apartments.\"\n3. \"This smash hit sitcom made its stars six of its six leads and finished in prime time in the top 10.\"\n4. \"Friends: The series.\"\n5. \"Quartz.\"\n6.",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.7
+        }
+      ]
+    },
+    {
+      "method": "norm",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.14710245799506083,
+          "total_time": 6.510816624999279,
+          "pruning_time": 0.09405220797634684,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 15.51264700225084,
+          "output": "The image depicts a scene where a person is holding a television remote control in their right hand and a cup of coffee in their left hand. The television screen is displaying the Netflix interface, showing various TV shows. The TV is a Sony brand, identifiable by the logo on the bottom right corner of the screen. The interface shows a list of TV shows, including titles and episode numbers, with a highlighted show titled \"F-R-E-E-N-P-S\" which is currently selected. The show is from the year 2003 and has 10 episodes. The show's title is displayed prominently, along with the tagline \"",
+          "pruning_method": "norm",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "norm",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.18433037502109073,
+          "total_time": 6.5538227499928325,
+          "pruning_time": 0.0014382500085048378,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 15.410853154383899,
+          "output": "The image depicts a scene where a person is holding a remote control in their right hand, pointing it towards a television screen. The television screen displays the show \"Friends,\" which is a popular American sitcom that aired from 2003 to 2011. The show's title is prominently displayed at the top of the screen in large, colorful letters. Below the title, there is a brief description of the show's premise, which includes phrases like \"Love, laughter, and the best friends you could ask for.\" The show's logo, \"Friends,\" is also visible in the upper left corner of the screen.\n\nThe",
+          "pruning_method": "norm",
+          "keep_ratio": 0.7
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "method": "baseline",
+      "method_name": "Baseline (No Pruning)",
+      "keep_ratio": 1.0,
+      "ttft_mean": 0.7363615829963237,
+      "ttft_std": 0,
+      "total_time_mean": 10.10527466700296,
+      "tokens_per_second_mean": 9.99478028338984,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 256,
+      "token_reduction_percent": 0.0,
+      "sample_output": "The image depicts a scene centered around a television screen displaying a TV show menu. The TV screen is mounted on a wall and is showing the menu of..."
+    },
+    {
+      "method": "attention",
+      "method_name": "Attention-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.14787612497457303,
+      "ttft_std": 0,
+      "total_time_mean": 10.541738125000848,
+      "tokens_per_second_mean": 9.580962721931767,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a black and white advertisement for a coffee brand, prominently featuring a large, bold, red \"FRIEDEN\" logo at the top. Below the lo...",
+      "ttft_improvement_percent": 79.91800110309241,
+      "total_time_improvement_percent": -4.319164717244994,
+      "speedup_factor": 0.9585966324696713
+    },
+    {
+      "method": "attention",
+      "method_name": "Attention-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.19040779100032523,
+      "ttft_std": 0,
+      "total_time_mean": 7.538322500011418,
+      "tokens_per_second_mean": 13.39820629852955,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a scene with a focus on a large, black, rectangular object that appears to be a digital display or a screen. The screen is divided i...",
+      "ttft_improvement_percent": 74.14207973404339,
+      "total_time_improvement_percent": 25.402101888170176,
+      "speedup_factor": 1.3405203434832687
+    },
+    {
+      "method": "similarity",
+      "method_name": "Similarity-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.1515898330253549,
+      "ttft_std": 0,
+      "total_time_mean": 7.2478747079730965,
+      "tokens_per_second_mean": 13.935119475629724,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a television screen displaying the show \"F.R.I.E.N.D.S.\" which is a popular American sitcom. The TV is mounted on a wall, and the sc...",
+      "ttft_improvement_percent": 79.41366897380472,
+      "total_time_improvement_percent": 28.27632155670357,
+      "speedup_factor": 1.3942397011756498
+    },
+    {
+      "method": "similarity",
+      "method_name": "Similarity-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.1872902500035707,
+      "ttft_std": 0,
+      "total_time_mean": 6.890153874992393,
+      "tokens_per_second_mean": 14.658598607873834,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a television screen displaying the Netflix interface, specifically the \"Friends\" series. The screen shows a list of the show's episo...",
+      "ttft_improvement_percent": 74.56545067961459,
+      "total_time_improvement_percent": 31.816263268023693,
+      "speedup_factor": 1.4666253976823
+    },
+    {
+      "method": "norm",
+      "method_name": "Norm-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.14710245799506083,
+      "ttft_std": 0,
+      "total_time_mean": 6.510816624999279,
+      "tokens_per_second_mean": 15.51264700225084,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a scene where a person is holding a television remote control in their right hand and a cup of coffee in their left hand. The televi...",
+      "ttft_improvement_percent": 80.0230672821785,
+      "total_time_improvement_percent": 35.5701171957331,
+      "speedup_factor": 1.5520748393069783
+    },
+    {
+      "method": "norm",
+      "method_name": "Norm-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.18433037502109073,
+      "ttft_std": 0,
+      "total_time_mean": 6.5538227499928325,
+      "tokens_per_second_mean": 15.410853154383899,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a scene where a person is holding a remote control in their right hand, pointing it towards a television screen. The television scre...",
+      "ttft_improvement_percent": 74.96741013144204,
+      "total_time_improvement_percent": 35.144536235187985,
+      "speedup_factor": 1.5418901383950323
+    }
+  ]
+}

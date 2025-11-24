@@ -44,10 +44,6 @@ checkpoints/
 # FastVLM submodule checkpoints
 fastvlm/checkpoints/
 
-# Results (keep examples only)
-*.json
-!examples/results/*.json
-
 # Plots (generated, keep assets only)
 plots/
 !assets/plots/*.png

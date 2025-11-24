@@ -1,0 +1,58 @@
+{
+  "image_file": "img/banana.jpg",
+  "prompt": "Describe the image.",
+  "model_path": "checkpoints/llava-fastvithd_0.5b_stage3",
+  "max_new_tokens": 256,
+  "runs": [],
+  "baseline": [
+    {
+      "ttft": 0.7355912500061095,
+      "total_time": 17.868738666991703,
+      "num_visual_tokens": 256,
+      "num_generated_tokens": 218,
+      "tokens_per_second": 12.200077692260606,
+      "output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a natural curve. They are predominantly yellow in color, indicating that they are ripe and ready to eat. The bananas have a smooth, glossy surface, which is typical for ripe bananas. The ends of the bananas are slightly darker, showing the natural brown color that develops as bananas ripen. The stems of the bananas are visible at the top, and they appear to be intact, without any signs of damage or bruising. The background of the image is plain white, which helps to highlight the bananas and make them the focal point of the image.\n\nBananas are a popular fruit known for their sweet taste and are commonly consumed as a snack or used in various culinary dishes. They are rich in vitamins, particularly vitamin C, and are a good source of dietary fiber. Bananas are also known for their potassium content, which helps in maintaining healthy blood pressure levels.\n\nIn summary, the image shows a bunch of ripe bananas with a yellow color and a smooth, glossy surface. The bananas have slightly darker ends and are arranged in a curved, overlapping manner. The background is plain white, emphasizing the bananas.",
+      "use_ats": false,
+      "top_k_tokens": null
+    }
+  ],
+  "ats": [
+    {
+      "ttft": 0.23371562498505227,
+      "total_time": 23.624906000011833,
+      "num_visual_tokens": 256,
+      "num_generated_tokens": 231,
+      "tokens_per_second": 9.77781668210169,
+      "output": "The image depicts a single, elongated object that appears to be a banana. The banana is yellow in color, with a smooth and glossy surface. The shape of the banana is elongated and slightly curved, tapering towards the end. The top of the banana is slightly darker, indicating the natural ripening process, where the skin may darken due to the breakdown of starches into sugars.\n\nThe banana is positioned centrally in the image, with no other objects or background elements present. The background is plain white, which contrasts sharply with the yellow color of the banana, making it the focal point of the image. There are no additional details or text present in the image.\n\nBananas are commonly recognized for their elongated shape and yellow color, which is due to the presence of chlorophyll and other pigments. The peel of a banana is typically smooth and slightly hairy, and the flesh inside is soft and sweet. Bananas are a popular fruit known for their nutritional benefits, including being a good source of potassium, vitamin C, and dietary fiber.\n\nIn summary, the image shows a single yellow banana with a smooth and glossy peel, positioned centrally against a plain white background. The banana's shape is elongated and slightly curved, tapering towards the end, and the",
+      "use_ats": true,
+      "top_k_tokens": 256
+    }
+  ],
+  "statistics": {
+    "baseline": {
+      "ttft_mean": 0.7355912500061095,
+      "ttft_std": null,
+      "ttft_min": 0.7355912500061095,
+      "ttft_max": 0.7355912500061095,
+      "total_time_mean": 17.868738666991703,
+      "total_time_std": 0,
+      "tokens_per_second_mean": 12.200077692260606,
+      "num_visual_tokens": 256
+    },
+    "ats": {
+      "ttft_mean": 0.23371562498505227,
+      "ttft_std": null,
+      "ttft_min": 0.23371562498505227,
+      "ttft_max": 0.23371562498505227,
+      "total_time_mean": 23.624906000011833,
+      "total_time_std": 0,
+      "tokens_per_second_mean": 9.77781668210169,
+      "num_visual_tokens": 256
+    },
+    "improvement": {
+      "ttft_percent": 68.2275142637829,
+      "ttft_absolute_ms": 501.8756250210572,
+      "token_reduction_percent": 0.0
+    }
+  }
+}
