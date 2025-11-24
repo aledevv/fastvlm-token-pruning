@@ -1,0 +1,259 @@
+{
+  "metadata": {
+    "image_file": "img/banana.jpg",
+    "prompt": "Describe this image in detail.",
+    "model_path": "checkpoints/llava-fastvithd_0.5b_stage3",
+    "max_new_tokens": 128,
+    "num_runs": 1,
+    "retention_ratios": [
+      0.5,
+      0.7
+    ]
+  },
+  "experiments": [
+    {
+      "method": "baseline",
+      "keep_ratio": 1.0,
+      "runs": [
+        {
+          "ttft": 0.749115292011993,
+          "total_time": 9.604833292018156,
+          "pruning_time": 0.0,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 256,
+          "token_reduction_percent": 0.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 10.515539096751777,
+          "output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing and symmetrical shape. Each banana is elongated and curved, with a bright yellow color that indicates ripeness. The bananas have a smooth, glossy surface, which is typical of ripe bananas. The tips of the bananas are slightly darker, with a brownish hue, suggesting that they are fully matured. The stems of the bananas are green and appear to be slightly curved, indicating that they have been recently harvested.\n\nThe bananas are positioned against a plain, white background, which contrasts sharply with the vibrant yellow of the",
+          "pruning_method": "none",
+          "keep_ratio": 1.0
+        }
+      ]
+    },
+    {
+      "method": "attention",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.149177375016734,
+          "total_time": 10.917930458002957,
+          "pruning_time": 0.12073291698470712,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 9.25083745390281,
+          "output": "The image depicts a single, ripe yellow banana. The banana is positioned horizontally and is the central focus of the image. The peel of the banana is smooth and unblemished, with a vibrant yellow color that indicates ripeness. The banana's shape is elongated, tapering slightly towards the top where it meets the stem. The stem itself is visible at the top of the banana, and it appears to be intact and firm.\n\nThe background of the image is plain white, which contrasts sharply with the bright yellow of the banana, making it stand out prominently. There are no other objects or elements in the image, ensuring that the viewer",
+          "pruning_method": "attention",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "attention",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.18741716697695665,
+          "total_time": 6.771646875014994,
+          "pruning_time": 0.2243936669838149,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 14.915130966538529,
+          "output": "The image features a single, vibrant yellow banana. The banana is depicted in a side view, with its curved shape clearly visible. The banana's skin is smooth and shiny, indicating that it is ripe and ready to eat. The color is a bright, vivid yellow, which is typical for a ripe banana. The banana's stem, which is the part that connects the banana to the tree, is not visible in this image, suggesting that the banana is whole and unpeeled.\n\nThe banana's peel is intact, with no visible cuts, bruises, or blemishes. The peel appears to be slightly glossy, which is characteristic of",
+          "pruning_method": "attention",
+          "keep_ratio": 0.7
+        }
+      ]
+    },
+    {
+      "method": "similarity",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.15089654200710356,
+          "total_time": 6.654653625009814,
+          "pruning_time": 1.5838319579779636,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 15.177348918720176,
+          "output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing and symmetrical shape. The bananas are predominantly yellow in color, indicating that they are ripe and ready to eat. The skin of the bananas is smooth and shiny, which is typical for ripe bananas. The stems of the bananas are green and slightly darker than the rest of the fruit, suggesting that they are still attached to the tree. The bananas are grouped together, forming a cluster, and the image captures them from a slightly elevated angle, allowing a clear view of their shape and color.\n\nBananas are a popular fruit",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "similarity",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.1930117500014603,
+          "total_time": 6.727749917015899,
+          "pruning_time": 1.1317597919842228,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 15.01244862633043,
+          "output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing, circular shape. Each banana is elongated and curved, with a smooth, yellow peel that indicates ripeness. The peel is uniformly yellow with a slight gradient, becoming lighter towards the ends. The bananas have a small, dark brown stem at the top, which is typical for bananas and helps to keep the bunch together. The stems are intact and appear to be slightly curved, adding to the natural appearance of the bunch.\n\nThe bananas are positioned against a plain, white background, which makes the yellow color of the bananas",
+          "pruning_method": "similarity",
+          "keep_ratio": 0.7
+        }
+      ]
+    },
+    {
+      "method": "norm",
+      "keep_ratio": 0.5,
+      "runs": [
+        {
+          "ttft": 0.15315120900049806,
+          "total_time": 6.559837292006705,
+          "pruning_time": 0.05621050001354888,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 128,
+          "token_reduction_percent": 50.0,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 15.396723349079185,
+          "output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a natural curve. Each banana is elongated and curved, with a bright yellow color indicating ripeness. The bananas have a smooth texture and a slight sheen, which is typical for ripe bananas. The stems of the bananas are visible at the top, and they appear to be slightly browned, which is common in ripe bananas. The bananas are grouped together, and their arrangement suggests they are part of a larger bunch, although the exact number of bananas is not fully visible due to the curvature of the bunch.\n\nThe background of the",
+          "pruning_method": "norm",
+          "keep_ratio": 0.5
+        }
+      ]
+    },
+    {
+      "method": "norm",
+      "keep_ratio": 0.7,
+      "runs": [
+        {
+          "ttft": 0.19527595798717812,
+          "total_time": 6.6002521670015994,
+          "pruning_time": 0.004536416003247723,
+          "num_visual_tokens_original": 256,
+          "num_visual_tokens_pruned": 179,
+          "token_reduction_percent": 30.078125,
+          "num_generated_tokens": 101,
+          "tokens_per_second": 15.302445640631161,
+          "output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing and symmetrical shape. Each banana is elongated and curved, with a bright yellow color that indicates ripeness. The bananas have a smooth, glossy surface, which is typical for ripe bananas. The ends of the bananas are slightly darker, with a brownish hue, which is characteristic of the natural ripening process. The stems of the bananas are visible at the top, and they appear to be intact, with no signs of being cut or broken.\n\nThe bananas are grouped together, forming a single bunch. The bunch",
+          "pruning_method": "norm",
+          "keep_ratio": 0.7
+        }
+      ]
+    }
+  ],
+  "summary": [
+    {
+      "method": "baseline",
+      "method_name": "Baseline (No Pruning)",
+      "keep_ratio": 1.0,
+      "ttft_mean": 0.749115292011993,
+      "ttft_std": 0,
+      "total_time_mean": 9.604833292018156,
+      "tokens_per_second_mean": 10.515539096751777,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 256,
+      "token_reduction_percent": 0.0,
+      "sample_output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing and symmetrical ..."
+    },
+    {
+      "method": "attention",
+      "method_name": "Attention-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.149177375016734,
+      "ttft_std": 0,
+      "total_time_mean": 10.917930458002957,
+      "tokens_per_second_mean": 9.25083745390281,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a single, ripe yellow banana. The banana is positioned horizontally and is the central focus of the image. The peel of the banana is...",
+      "ttft_improvement_percent": 80.0861927920241,
+      "total_time_improvement_percent": -13.671212462125865,
+      "speedup_factor": 0.8797302134286552
+    },
+    {
+      "method": "attention",
+      "method_name": "Attention-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.18741716697695665,
+      "ttft_std": 0,
+      "total_time_mean": 6.771646875014994,
+      "tokens_per_second_mean": 14.915130966538529,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image features a single, vibrant yellow banana. The banana is depicted in a side view, with its curved shape clearly visible. The banana's skin is...",
+      "ttft_improvement_percent": 74.98153235217147,
+      "total_time_improvement_percent": 29.49750746176518,
+      "speedup_factor": 1.4183895689328734
+    },
+    {
+      "method": "similarity",
+      "method_name": "Similarity-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.15089654200710356,
+      "ttft_std": 0,
+      "total_time_mean": 6.654653625009814,
+      "tokens_per_second_mean": 15.177348918720176,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing and symmetrical ...",
+      "ttft_improvement_percent": 79.85669981428069,
+      "total_time_improvement_percent": 30.71557389194887,
+      "speedup_factor": 1.4433258037534584
+    },
+    {
+      "method": "similarity",
+      "method_name": "Similarity-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.1930117500014603,
+      "ttft_std": 0,
+      "total_time_mean": 6.727749917015899,
+      "tokens_per_second_mean": 15.01244862633043,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing, circular shape....",
+      "ttft_improvement_percent": 74.23470698574789,
+      "total_time_improvement_percent": 29.95453734104039,
+      "speedup_factor": 1.427644221394958
+    },
+    {
+      "method": "norm",
+      "method_name": "Norm-Based",
+      "keep_ratio": 0.5,
+      "ttft_mean": 0.15315120900049806,
+      "ttft_std": 0,
+      "total_time_mean": 6.559837292006705,
+      "tokens_per_second_mean": 15.396723349079185,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 128,
+      "token_reduction_percent": 50.0,
+      "sample_output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a natural curve. Each banana is elong...",
+      "ttft_improvement_percent": 79.55572251246392,
+      "total_time_improvement_percent": 31.7027470173992,
+      "speedup_factor": 1.464187732784446
+    },
+    {
+      "method": "norm",
+      "method_name": "Norm-Based",
+      "keep_ratio": 0.7,
+      "ttft_mean": 0.19527595798717812,
+      "ttft_std": 0,
+      "total_time_mean": 6.6002521670015994,
+      "tokens_per_second_mean": 15.302445640631161,
+      "num_visual_tokens_original": 256,
+      "num_visual_tokens_pruned": 179,
+      "token_reduction_percent": 30.078125,
+      "sample_output": "The image depicts a bunch of bananas. The bananas are arranged in a curved, slightly overlapping manner, forming a visually appealing and symmetrical ...",
+      "ttft_improvement_percent": 73.93245604922829,
+      "total_time_improvement_percent": 31.28197058363767,
+      "speedup_factor": 1.4552221716676463
+    }
+  ]
+}
