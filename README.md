@@ -1,324 +1,117 @@
-# FastVLM Token Pruning Optimization
+# FastVLM: Efficient Vision Encoding for Vision Language Models
 
-Advanced token pruning methods for Vision-Language Models (VLMs) to achieve **up to 80% faster inference** while maintaining output quality.
+This is the official repository of
+**[FastVLM: Efficient Vision Encoding for Vision Language Models](https://www.arxiv.org/abs/2412.13303). (CVPR 2025)**
 
-## 🎯 Overview
+[//]: # (![FastViTHD Performance]&#40;docs/acc_vs_latency_qwen-2.png&#41;)
+<p align="center">
+<img src="docs/acc_vs_latency_qwen-2.png" alt="Accuracy vs latency figure." width="400"/>
+</p>
 
-This project implements and compares three token pruning techniques for optimizing FastVLM (Fast Vision-Language Model):
+### Highlights
+* We introduce FastViTHD, a novel hybrid vision encoder designed to output fewer tokens and significantly reduce encoding time for high-resolution images.  
+* Our smallest variant outperforms LLaVA-OneVision-0.5B with 85x faster Time-to-First-Token (TTFT) and 3.4x smaller vision encoder.
+* Our larger variants using Qwen2-7B LLM outperform recent works like Cambrian-1-8B while using a single image encoder with a 7.9x faster TTFT.
+* Demo iOS app to demonstrate the performance of our model on a mobile device.
 
-1. **Attention-Based Pruning (ATS)** - Uses attention maps to identify important tokens
-2. **Similarity-Based Pruning (PruMerge Lite)** - Merges redundant similar tokens
-3. **Norm-Based Pruning (Low Magnitude)** - Keeps tokens with highest L2 norm
+<table>
+<tr>
+    <td><img src="docs/fastvlm-counting.gif" alt="FastVLM - Counting"></td>
+    <td><img src="docs/fastvlm-handwriting.gif" alt="FastVLM - Handwriting"></td>
+    <td><img src="docs/fastvlm-emoji.gif" alt="FastVLM - Emoji"></td>
+</tr>
+</table>
 
-## 📊 Key Results
+## Getting Started
+We use LLaVA codebase to train FastVLM variants. In order to train or finetune your own variants, 
+please follow instructions provided in [LLaVA](https://github.com/haotian-liu/LLaVA) codebase. 
+We provide instructions for running inference with our models.   
 
-| Method | Token Retention | TTFT Improvement | Speedup | Quality |
-|--------|----------------|------------------|---------|---------|
-| **Norm-Based** | 50% | **80%** ⚡ | **1.55x** | ✅ Excellent |
-| **Similarity-Based** | 50% | 79% | 1.44x | ✅ Excellent |
-| **Attention-Based** | 70% | 74% | 1.42x | ✅ Good |
-| Baseline | 100% | - | 1.0x | 🔵 Reference |
-
-### Performance Highlights
-
-- **TTFT (Time To First Token)**: Reduced from ~740ms to ~150ms
-- **Generation Speed**: Up to 1.55x faster
-- **Token Reduction**: 30-50% fewer visual tokens
-- **Quality**: Maintained detailed, accurate descriptions
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-This project requires the original [FastVLM implementation](https://github.com/apple/ml-fastvlm) from Apple Research.
-
-### Installation
-
-#### Step 1: Clone with Submodules
-
+### Setup
 ```bash
-# Clone the repository with FastVLM submodule
-git clone --recursive https://github.com/yourusername/fastvlm-token-pruning.git
-cd fastvlm-token-pruning
-```
-
-If you already cloned without `--recursive`:
-
-```bash
-git submodule update --init --recursive
-```
-
-#### Step 2: Download Model Checkpoints
-
-Use the provided script from FastVLM to download pre-trained models:
-
-```bash
-cd fastvlm
-bash get_models.sh
-```
-
-This downloads checkpoints to `fastvlm/checkpoints/`. Available models:
-- `llava-fastvithd_0.5b_stage2` - Stage 2 checkpoint
-- `llava-fastvithd_0.5b_stage3` - Stage 3 checkpoint (recommended)
-
-#### Step 3: Install Dependencies
-
-```bash
-# Install project dependencies
-cd ..
-pip install -r requirements.txt
-
-# Install FastVLM package
-cd fastvlm
+conda create -n fastvlm python=3.10
+conda activate fastvlm
 pip install -e .
-cd ..
 ```
 
-#### Step 4: Verify Installation
+### Model Zoo
+For detailed information on various evaluations, please refer to our [paper](https://www.arxiv.org/abs/2412.13303).
+
+| Model        | Stage |                                            Pytorch Checkpoint (url)                                             |
+|:-------------|:-----:|:---------------------------------------------------------------------------------------------------------------:|
+| FastVLM-0.5B |   2   | [fastvlm_0.5b_stage2](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_0.5b_stage2.zip) |
+|              |   3   | [fastvlm_0.5b_stage3](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_0.5b_stage3.zip) |
+| FastVLM-1.5B |   2   | [fastvlm_1.5b_stage2](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_1.5b_stage2.zip) |
+|              |   3   | [fastvlm_1.5b_stage3](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_1.5b_stage3.zip)  |
+| FastVLM-7B   |   2   | [fastvlm_7b_stage2](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_7b_stage2.zip)  |
+|              |   3   | [fastvlm_7b_stage3](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_7b_stage3.zip)  |
+
+To download all the pretrained checkpoints run the command below (note that this might take some time depending on your connection so might be good to grab ☕️ while you wait).
 
 ```bash
-# Quick test
-python scripts/eval_ats.py \
-    --model-path fastvlm/checkpoints/llava-fastvithd_0.5b_stage3 \
-    --image-file assets/images/banana.jpg \
-    --num-runs 1
+bash get_models.sh   # Files will be downloaded to `checkpoints` directory.
 ```
 
-### Basic Usage
-
+### Usage Example
+To run inference of PyTorch checkpoint, follow the instruction below
 ```bash
-# Run evaluation with all pruning methods
-python scripts/eval_pruning_methods.py \
-    --image-file assets/images/banana.jpg \
-    --retention-ratios 0.3 0.5 0.7 \
-    --num-runs 3
-
-# Visualize results
-python scripts/visualize_pruning_results.py \
-    --results-file pruning_results.json
+python predict.py --model-path /path/to/checkpoint-dir \
+                  --image-file /path/to/image.png \
+                  --prompt "Describe the image."
 ```
 
-## 📖 Methods Explained
-
-### 1. Attention-Based Pruning (ATS)
-
-**How it works:**
-- Extracts attention maps from the vision tower
-- Computes token importance based on attention weights
-- Keeps top-k tokens with highest importance scores
-
-**Pros:**
-- Semantically aware (considers what the model "looks at")
-- Good for preserving key visual elements
-
-**Cons:**
-- Can be too aggressive at low retention ratios
-- May miss important low-attention details
-
-### 2. Similarity-Based Pruning (PruMerge Lite)
-
-**How it works:**
-- Computes cosine similarity between all token pairs
-- Identifies clusters of similar/redundant tokens
-- Merges similar tokens via average pooling
-
-**Pros:**
-- Reduces true redundancy (e.g., uniform backgrounds)
-- Maintains semantic diversity
-- Excellent quality preservation
-
-**Cons:**
-- Slightly slower than norm-based (similarity computation)
-- Requires tuning similarity threshold
-
-### 3. Norm-Based Pruning (Low Magnitude)
-
-**How it works:**
-- Calculates L2 norm of each token's feature vector
-- Keeps tokens with highest magnitude
-- Discards low-energy tokens
-
-**Pros:**
-- **Fastest method** (simple computation)
-- Excellent speed/quality tradeoff
-- Works well across different image types
-
-**Cons:**
-- Heuristic-based (may miss low-contrast important details)
-- Less semantically aware than attention-based
-
-## 📈 Detailed Results
-
-### Banana Image Test
-
-![Pruning Comparison](assets/plots/pruning_comparison.png)
-
-**Observations:**
-- **Norm-Based 50%**: Best overall performance (1.46x speedup, maintains "bunch of bananas")
-- **Similarity-Based 50%**: Excellent quality, correctly identifies multiple bananas
-- **Attention-Based 50%**: Too aggressive, describes as "single banana" ❌
-
-### Netflix Screenshot Test
-
-**Best Performers:**
-- **Norm-Based 50%**: 1.55x speedup, 80% TTFT reduction
-- **Similarity-Based 70%**: 1.47x speedup, best quality preservation
-- **Attention-Based 70%**: 1.34x speedup, good balance
-
-## 🛠️ Advanced Usage
-
-### Custom Pruning Configuration
-
-```python
-from scripts.eval_pruning_methods import run_inference
-
-# Run with specific method and retention
-result = run_inference(
-    args,
-    pruning_method='norm',  # 'attention', 'similarity', or 'norm'
-    keep_ratio=0.5          # 0.0 to 1.0
-)
-
-print(f"TTFT: {result['ttft']*1000:.1f}ms")
-print(f"Speedup: {result['speedup_factor']:.2f}x")
-print(f"Output: {result['output']}")
-```
-
-### Parameter Sweep
-
+### Inspect Attention Over Visual Tokens
+Use `inspect_attention.py` to attach to a specific decoder layer, capture attention
+weights during generation, and print the relative importance of each visual token.
 ```bash
-# Test multiple retention ratios
-python scripts/eval_pruning_methods.py \
-    --retention-ratios 0.2 0.3 0.4 0.5 0.6 0.7 0.8 \
-    --num-runs 5 \
-    --output-file sweep_results.json
+python inspect_attention.py --model-path checkpoints/llava-fastvithd_0.5b_stage3 \
+                            --image-file img/scheme.png \
+                            --prompt "Describe the image." \
+                            --layer-index -1 --token-index -1 --top-k 16 --print-mask
 ```
+The script reports the model response, the visual-token mask, and the most attended
+visual tokens (optionally dumping all normalized weights).
 
-### Batch Evaluation
-
+### Measure TTFT
+Use `eval_ttft.py` to benchmark time-to-first-token (TTFT) latency for any checkpoint.
 ```bash
-# Evaluate on multiple images
-for img in assets/images/*.jpg; do
-    python scripts/eval_pruning_methods.py \
-        --image-file "$img" \
-        --output-file "results_$(basename $img .jpg).json"
-done
+python eval_ttft.py --model-path checkpoints/llava-fastvithd_0.5b_stage3 \
+                    --image-file img/scheme.png \
+                    --prompt "Describe the image." \
+                    --num-runs 5 --warmup-runs 1 --report-json ttft_metrics.json
 ```
+The script reports per-run TTFT/total latency, summary statistics, and (optionally) stores
+the raw measurements as JSON for downstream analysis.
 
-## 📁 Project Structure
+### Inference on Apple Silicon
+To run inference on Apple Silicon, pytorch checkpoints have to be exported to format 
+suitable for running on Apple Silicon, detailed instructions and code can be found [`model_export`](model_export/) subfolder.
+Please see the README there for more details.
 
+For convenience, we provide 3 models that are in Apple Silicon compatible format: [fastvlm_0.5b_stage3](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_0.5b_stage3_llm.fp16.zip), 
+[fastvlm_1.5b_stage3](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_1.5b_stage3_llm.int8.zip), 
+[fastvlm_7b_stage3](https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_7b_stage3_llm.int4.zip). 
+We encourage developers to export the model of their choice with the appropriate quantization levels following 
+the instructions in [`model_export`](model_export/).
+
+### Inference on Apple Devices
+To run inference on Apple devices like iPhone, iPad or Mac, see [`app`](app/) subfolder for more details.
+
+## Citation
+If you found this code useful, please cite the following paper:
 ```
-fastvlm-token-pruning/
-├── README.md                      # This file
-├── requirements.txt               # Python dependencies
-├── .gitignore                     # Git ignore rules
-│
-├── scripts/                       # Evaluation scripts
-│   ├── eval_ats.py               # ATS-only evaluation
-│   ├── eval_pruning_methods.py   # Compare all methods
-│   └── visualize_pruning_results.py  # Generate plots
-│
-├── examples/                      # Example results
-│   └── results/
-│       ├── banana_results.json
-│       └── netflix_results.json
-│
-└── assets/                        # Images and plots
-    ├── images/
-    │   ├── banana.jpg
-    │   └── netflix.jpg
-    └── plots/
-        ├── pruning_comparison.png
-        └── quality_comparison.png
-```
-
-## 🔬 Methodology
-
-### Evaluation Metrics
-
-1. **TTFT (Time To First Token)**: Time until first output token
-2. **Total Generation Time**: Complete response generation time
-3. **Tokens/Second**: Generation throughput
-4. **Visual Token Count**: Number of tokens after pruning
-5. **Output Quality**: Manual inspection of generated descriptions
-
-### Experimental Setup
-
-- **Model**: FastVLM with FastViTHD vision encoder
-- **Hardware**: Apple Silicon (MPS backend)
-- **Test Images**: Diverse set (objects, scenes, text)
-- **Runs**: Multiple runs per configuration for statistical significance
-
-## 💡 Recommendations
-
-### For Production Use
-
-**Best Overall**: **Norm-Based @ 50-70%**
-- Fastest inference
-- Excellent quality
-- Simple implementation
-- Robust across image types
-
-**Best Quality**: **Similarity-Based @ 70%**
-- Minimal quality loss
-- Good speedup (1.4-1.5x)
-- Preserves semantic diversity
-
-**Conservative**: **Attention-Based @ 70%**
-- Semantically aware
-- Safe choice for critical applications
-- Moderate speedup (1.3-1.4x)
-
-### Tuning Guidelines
-
-| Use Case | Recommended Method | Retention Ratio |
-|----------|-------------------|-----------------|
-| Real-time chat | Norm-Based | 40-50% |
-| Image captioning | Similarity-Based | 60-70% |
-| Visual QA | Attention-Based | 70-80% |
-| Batch processing | Norm-Based | 30-40% |
-
-## 🔗 Related Work
-
-This project builds upon:
-
-- **FastVLM**: [Apple ML Research](https://github.com/apple/ml-fastvlm)
-- **LLaVA**: Large Language and Vision Assistant
-- **PruMerge**: Token merging for efficient VLMs
-
-## 📝 Citation
-
-If you use this work, please cite:
-
-```bibtex
-@software{fastvlm_token_pruning,
-  title={FastVLM Token Pruning Optimization},
-  author={Your Name},
-  year={2024},
-  url={https://github.com/yourusername/fastvlm-token-pruning}
+@InProceedings{fastvlm2025,
+  author = {Pavan Kumar Anasosalu Vasu, Fartash Faghri, Chun-Liang Li, Cem Koc, Nate True, Albert Antony, Gokul Santhanam, James Gabriel, Peter Grasch, Oncel Tuzel, Hadi Pouransari},
+  title = {FastVLM: Efficient Vision Encoding for Vision Language Models},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month = {June},
+  year = {2025},
 }
 ```
 
-And the original FastVLM paper:
+## Acknowledgements
+Our codebase is built using multiple opensource contributions, please see [ACKNOWLEDGEMENTS](ACKNOWLEDGEMENTS) for more details. 
 
-```bibtex
-@article{fastvlm2024,
-  title={FastVLM: Efficient Vision-Language Models},
-  author={Apple ML Research},
-  year={2024}
-}
-```
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📧 Contact
-
-For questions or feedback, please open an issue on GitHub.
-
----
+## License
+Please check out the repository [LICENSE](LICENSE) before using the provided code and
+[LICENSE_MODEL](LICENSE_MODEL) for the released models.
