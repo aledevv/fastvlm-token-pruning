@@ -458,7 +458,7 @@ if __name__ == "__main__":
     parser.add_argument("--conv-mode", type=str, default="qwen_2")
     parser.add_argument("--temperature", type=float, default=0.2)
     parser.add_argument("--max-new-tokens", type=int, default=128)
-    parser.add_argument("--max-images", type=int, default=1, help="Numero immagini")
+    parser.add_argument("--max-images", type=int, default=100, help="Numero immagini")
     parser.add_argument("--retention-ratios", type=float, nargs='+', default=[0.1, 0.3, 0.5, 0.7])
     
     args = parser.parse_args()
