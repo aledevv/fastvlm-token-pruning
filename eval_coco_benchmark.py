@@ -403,13 +403,13 @@ def plot_results(df, out_dir):
         ax.scatter([1.0], [baseline_acc], color='black', s=150, label='Baseline', marker='X')
 
     # Annotate each point with method and ratio
-    for _, row in df_methods.iterrows():
-        x = row.get('speedup', None)
-        y = row.get('sim_vs_gt', None)
-        if x is None or y is None or pd.isna(x) or pd.isna(y):
-            continue
-        label = f"{row['method']} ({row['ratio']})"
-        ax.annotate(label, (x, y), textcoords="offset points", xytext=(5,5), ha='left', fontsize=8)
+    # for _, row in df_methods.iterrows():
+    #     x = row.get('speedup', None)
+    #     y = row.get('sim_vs_gt', None)
+    #     if x is None or y is None or pd.isna(x) or pd.isna(y):
+    #         continue
+    #     label = f"{row['method']} ({row['ratio']})"
+    #     ax.annotate(label, (x, y), textcoords="offset points", xytext=(5,5), ha='left', fontsize=8)
 
     ax.set_title('Trade-off: Speedup vs Accuracy (Top Right is Better)')
     ax.set_xlabel('Speedup Factor (x)')
@@ -458,7 +458,7 @@ if __name__ == "__main__":
     parser.add_argument("--conv-mode", type=str, default="qwen_2")
     parser.add_argument("--temperature", type=float, default=0.2)
     parser.add_argument("--max-new-tokens", type=int, default=128)
-    parser.add_argument("--max-images", type=int, default=50, help="Numero immagini")
+    parser.add_argument("--max-images", type=int, default=1, help="Numero immagini")
     parser.add_argument("--retention-ratios", type=float, nargs='+', default=[0.1, 0.3, 0.5, 0.7])
     
     args = parser.parse_args()
