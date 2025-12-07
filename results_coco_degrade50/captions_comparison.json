@@ -1,0 +1,100 @@
+[
+    {
+        "image_id": "000000011813.jpg",
+        "ground_truth": [
+            "A camera sits on a tripod connected to a laptop.",
+            "A camera with a computer is set up on a tripod",
+            "A camera and tripod is shown with a laptop.",
+            "a tripod sitting next to  a laptop",
+            "Camera equipment is set up in a room with vending machines in the background."
+        ],
+        "baseline": {
+            "caption": "The image depicts a scene in a room with a laptop on a folding chair, a tripod with a camera on top, and a vending machine in the background.",
+            "time": 3.699639083002694,
+            "accuracy": 0.7075164318084717
+        },
+        "experiments": [
+            {
+                "method": "attention",
+                "ratio": 0.3,
+                "caption": "The image shows a black and white striped pole with a green light at the top.",
+                "time": 2.0542374160140753,
+                "speedup": 1.8009793094808204,
+                "accuracy_vs_gt": 0.20828606188297272,
+                "similarity_vs_baseline": 0.3408985137939453
+            },
+            {
+                "method": "attention",
+                "ratio": 0.5,
+                "caption": "The image depicts a black and white striped pole with a blue and white sign attached to it. The sign has a green light illuminated on it.",
+                "time": 3.1531211659894325,
+                "speedup": 1.173326011987163,
+                "accuracy_vs_gt": 0.16858921945095062,
+                "similarity_vs_baseline": 0.30218505859375
+            },
+            {
+                "method": "attention",
+                "ratio": 0.7,
+                "caption": "The image shows a black and white striped pole with a green light at the top. The pole is mounted on a concrete base.",
+                "time": 2.960119042021688,
+                "speedup": 1.2498278043831412,
+                "accuracy_vs_gt": 0.16116218268871307,
+                "similarity_vs_baseline": 0.225898876786232
+            },
+            {
+                "method": "similarity",
+                "ratio": 0.3,
+                "caption": "The image depicts a scene in a room with a large silver refrigerator, a camera mounted on a tripod, and a vending machine.",
+                "time": 2.035944417002611,
+                "speedup": 1.8171611425666685,
+                "accuracy_vs_gt": 0.699849009513855,
+                "similarity_vs_baseline": 0.7945759296417236
+            },
+            {
+                "method": "similarity",
+                "ratio": 0.5,
+                "caption": "The image depicts a scene in a room with a camera on a tripod. There's also a vending machine and a refrigerator in the background.",
+                "time": 1.9122585420263931,
+                "speedup": 1.9346960683894967,
+                "accuracy_vs_gt": 0.740077793598175,
+                "similarity_vs_baseline": 0.8498945832252502
+            },
+            {
+                "method": "similarity",
+                "ratio": 0.7,
+                "caption": "The image shows a scene in a room with a laptop on a tripod, a camera on a tripod, a refrigerator, and a table.",
+                "time": 2.116457291005645,
+                "speedup": 1.7480338954748256,
+                "accuracy_vs_gt": 0.7557164430618286,
+                "similarity_vs_baseline": 0.8867287635803223
+            },
+            {
+                "method": "norm",
+                "ratio": 0.3,
+                "caption": "The image depicts a scene with a laptop on a table, a tripod with a camera on top, and a vending machine in the background.",
+                "time": 2.2757567079970613,
+                "speedup": 1.6256742515586473,
+                "accuracy_vs_gt": 0.7412760257720947,
+                "similarity_vs_baseline": 0.9148666858673096
+            },
+            {
+                "method": "norm",
+                "ratio": 0.5,
+                "caption": "The image depicts a scene with a laptop, a tripod, and a camera. The laptop is open and placed on a folding chair. The tripod is positioned behind the laptop, and a camera is mounted on it. The camera is connected to the tripod via a cable. In the background, there is a vending machine and a table with a box on it.",
+                "time": 5.564769165997859,
+                "speedup": 0.6648324436543425,
+                "accuracy_vs_gt": 0.7707929611206055,
+                "similarity_vs_baseline": 0.9147385358810425
+            },
+            {
+                "method": "norm",
+                "ratio": 0.7,
+                "caption": "The image depicts a scene in a room with a laptop on a stand, a tripod, and a camera on top of it. There's also a table with a tray on it.",
+                "time": 3.106367333966773,
+                "speedup": 1.1909857029942186,
+                "accuracy_vs_gt": 0.7398433685302734,
+                "similarity_vs_baseline": 0.8878371119499207
+            }
+        ]
+    }
+]

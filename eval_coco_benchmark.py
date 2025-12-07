@@ -377,11 +377,11 @@ def plot_results(df, out_dir):
 
     baseline_rows = df[df['method'] == 'baseline']
     baseline_acc = baseline_rows['sim_vs_gt'].mean() if not baseline_rows.empty else None
-    df_methods = df[df['method'] != 'baseline']
+    df_methods = df[df['method'] != 'baseline'].copy() # Usa .copy() per evitare SettingWithCopyWarning
 
     palette = {"attention": "blue", "similarity": "orange", "norm": "green"}
 
-    # 1. Original Similarity vs Retention
+    # --- 1. Original Similarity vs Retention ---
     plt.figure(figsize=(10, 6))
     ax = plt.gca()
     sns.lineplot(data=df_methods, x='ratio', y='sim_vs_gt', hue='method', style='method', markers=True, dashes=False, palette=palette, ax=ax)
@@ -395,7 +395,7 @@ def plot_results(df, out_dir):
     plt.savefig(os.path.join(out_dir, 'accuracy_vs_ratio.png'))
     plt.close()
 
-    # 2. Pareto Frontier
+    # --- 2. Pareto Frontier (Speedup vs Accuracy) ---
     plt.figure(figsize=(10, 6))
     ax = plt.gca()
     sns.scatterplot(data=df_methods, x='speedup', y='sim_vs_gt', hue='method', style='ratio', s=100, ax=ax, palette=palette)
@@ -410,15 +410,12 @@ def plot_results(df, out_dir):
     plt.savefig(os.path.join(out_dir, 'tradeoff_pareto_labeled.png'))
     plt.close()
 
-    # 3. NUOVO: Pareto Frontier (Degrado Accuracy vs Speedup)
+    # --- 3. NUOVO: Pareto Frontier (Similarità vs. Speedup) ---
     
-    # Calcola il Degrado di Accuracy (Baseline Acc - Pruned Acc)
-    df_methods['accuracy_degradation'] = df_methods['baseline_acc'] - df_methods['sim_vs_gt']
-
     # Calcola le medie per ogni metodo e retention ratio
     df_mean = df_methods.groupby(['method', 'ratio']).agg(
         mean_speedup=('speedup', 'mean'),
-        mean_degradation=('accuracy_degradation', 'mean')
+        mean_similarity=('sim_vs_baseline', 'mean') # Usiamo 'sim_vs_baseline' direttamente!
     ).reset_index()
 
     plt.figure(figsize=(10, 6))
@@ -428,7 +425,7 @@ def plot_results(df, out_dir):
     sns.scatterplot(
         data=df_mean, 
         x='mean_speedup', 
-        y='mean_degradation', 
+        y='mean_similarity', 
         hue='method', 
         style='method', 
         s=150, 
@@ -442,7 +439,7 @@ def plot_results(df, out_dir):
          ratio = df_mean['ratio'].iloc[line]
          plt.text(
              df_mean['mean_speedup'].iloc[line] + 0.05, 
-             df_mean['mean_degradation'].iloc[line], 
+             df_mean['mean_similarity'].iloc[line], 
              f'R={ratio:.2f}', 
              horizontalalignment='left', 
              size='small', 
@@ -450,18 +447,19 @@ def plot_results(df, out_dir):
              weight='semibold'
          )
 
-    # Punto Baseline (0.0 degradazione, 1.0 speedup)
-    ax.scatter([1.0], [0.0], color='black', s=150, label='Baseline', marker='X')
+    # Punto Baseline (1.0 Similarità, 1.0 Speedup)
+    ax.scatter([1.0], [1.0], color='black', s=150, label='Baseline', marker='X')
     
-    ax.axhline(y=0, color='gray', linestyle=':', alpha=0.5)
-    ax.axvline(x=1, color='gray', linestyle=':', alpha=0.5)
+    ax.axhline(y=1.0, color='gray', linestyle=':', alpha=0.5)
+    ax.axvline(x=1.0, color='gray', linestyle=':', alpha=0.5)
+    ax.set_ylim(bottom=df_mean['mean_similarity'].min() - 0.05, top=1.05) # Regola l'asse Y per chiarezza
 
-    ax.set_title('Trade-off: Accuracy Degradation vs. Speedup (Media per Ratio)')
+    ax.set_title('Trade-off: Similarità alla Baseline vs. Speedup (Media per Ratio)')
     ax.set_xlabel('Speedup Factor (x)')
-    ax.set_ylabel(r'Accuracy Degradation ($\text{Acc}_{\text{Base}} - \text{Acc}_{\text{Pruned}}$)')
+    ax.set_ylabel(r'Similarità alla Baseline ($\text{Sim}_{\text{Pruned vs Base}}$)')
     ax.legend(title='Pruning Method', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
-    plt.savefig(os.path.join(out_dir, 'tradeoff_degradation_vs_speedup_mean.png'))
+    plt.savefig(os.path.join(out_dir, 'tradeoff_similarity_vs_speedup_mean.png'))
     plt.close()
     
     print("📊 Grafici generati in output.")
